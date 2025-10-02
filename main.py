@@ -7,8 +7,8 @@ from contextlib import asynccontextmanager
 import uvicorn
 from pathlib import Path
 
-from src.api import chats
-from src.core.config import settings
+from api import chats
+from core.config import settings
 
 
 @asynccontextmanager
