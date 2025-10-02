@@ -12,8 +12,8 @@ from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.schema import Document
 
-from app.core.config import settings
-from app.models.schemas import ChatMetadata
+from core.config import settings
+from models.schemas import ChatMetadata
 
 
 class VectorStoreRepository:

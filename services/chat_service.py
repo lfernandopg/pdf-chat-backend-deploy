@@ -15,8 +15,8 @@ from langchain_openai import ChatOpenAI
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
-from app.repositories.vector_store_repository import VectorStoreRepository
-from app.models.schemas import (
+from repositories.vector_store_repository import VectorStoreRepository
+from models.schemas import (
     ChatCreateResponse,
     ChatStatusResponse,
     AddDocumentsResponse,
@@ -24,7 +24,7 @@ from app.models.schemas import (
     AskResponse,
     ChatMetadata
 )
-from app.core.config import settings
+from core.config import settings
 
 
 class ChatService:
@@ -326,12 +326,13 @@ class ChatService:
         
         try:
             # Check if we have API keys available
-            if settings.OPENAI_API_KEY:
+            if settings.HUGGINGFACE_API_KEY:
                 llm = ChatOpenAI(
+                    base_url=settings.BASE_URL_PROVIDER,
                     model=model,
                     temperature=temperature,
                     max_tokens=max_tokens,
-                    api_key=settings.OPENAI_API_KEY
+                    api_key=settings.HUGGINGFACE_API_KEY
                 )
             else:
                 # Simulation mode - return a mock response

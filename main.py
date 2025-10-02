@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 import uvicorn
 from pathlib import Path
 
-#from app.api import chats
+from src.api import chats
 from src.core.config import settings
 
 
@@ -39,7 +39,7 @@ app.add_middleware(
 )
 
 # Include routers
-#app.include_router(chats.router, prefix="/api/v1/chats", tags=["chats"])
+app.include_router(chats.router, prefix="/api/v1/chats", tags=["chats"])
 
 
 @app.get("/")

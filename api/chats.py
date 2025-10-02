@@ -5,9 +5,9 @@ Handles HTTP requests and delegates to service layer
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException, Query
 from typing import List, Optional
 
-from app.services.chat_service import ChatService
-from app.repositories.vector_store_repository import VectorStoreRepository
-from app.models.schemas import (
+from services.chat_service import ChatService
+from repositories.vector_store_repository import VectorStoreRepository
+from models.schemas import (
     ChatCreateResponse,
     ChatStatusResponse,
     AddDocumentsResponse,

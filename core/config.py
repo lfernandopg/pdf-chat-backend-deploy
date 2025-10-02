@@ -28,7 +28,8 @@ class Settings(BaseSettings):
     DEFAULT_EMBEDDING_MODEL: str = "sentence-transformers/all-MiniLM-L6-v2"
     
     # LLM
-    DEFAULT_LLM_MODEL: str = "gpt-3.5-turbo"
+    BASE_URL_PROVIDER: str = "https://router.huggingface.co/v1"
+    DEFAULT_LLM_MODEL: str = "meta-llama/Llama-3.2-3B-Instruct:together"
     LLM_TEMPERATURE: float = 0.7
     LLM_MAX_TOKENS: int = 800
     
