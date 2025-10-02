@@ -1,9 +1,9 @@
 fastapi>=0.117.1,<0.118.0
 python-dotenv>=1.1.1,<2.0.0
-pydantic-settings^2.11.0
-pydantic^2.5.3
-python-multipart^0.0.6
-pathlib^1.0.1
+pydantic-settings==2.11.0
+pydantic==2.5.3
+python-multipart==0.0.6
+pathlib==1.0.1
 langchain==0.3.27
 langchain-community==0.3.29
 langchain-openai==0.3.32
