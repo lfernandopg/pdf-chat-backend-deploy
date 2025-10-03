@@ -1,10 +1,12 @@
 """
 FastAPI RAG Application - Main Entry Point
 """
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 import uvicorn
+import os
 from pathlib import Path
 
 from api import chats
@@ -26,7 +28,7 @@ app = FastAPI(
     title="RAG PDF Chat API",
     description="Sistema de RAG sobre documentos PDF con arquitectura escalable",
     version="1.0.0",
-    lifespan=lifespan
+    lifespan=lifespan,
 )
 
 # CORS configuration
@@ -45,11 +47,7 @@ app.include_router(chats.router, prefix="/api/v1/chats", tags=["chats"])
 @app.get("/")
 async def root():
     """Health check endpoint"""
-    return {
-        "status": "online",
-        "service": "PDF Chat API",
-        "version": "1.0.0"
-    }
+    return {"status": "online", "service": "PDF Chat API", "version": "1.0.0"}
 
 
 @app.get("/health")
@@ -58,14 +56,10 @@ async def health_check():
     return {
         "status": "healthy",
         "storage_path": str(settings.STORAGE_PATH),
-        "storage_exists": Path(settings.STORAGE_PATH).exists()
+        "storage_exists": Path(settings.STORAGE_PATH).exists(),
     }
 
 
 if __name__ == "__main__":
-    uvicorn.run(
-        "main:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=True
-    )
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=False)
